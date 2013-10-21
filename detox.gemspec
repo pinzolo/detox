@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Detox::VERSION
   spec.authors       = ["pinzolo"]
   spec.email         = ["pinzolo@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{Detox is collection of validators for AciveModel and AcitveRecord.}
+  spec.summary       = spec.description
+  spec.homepage      = "https://github.com/pinzolo/detox"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
