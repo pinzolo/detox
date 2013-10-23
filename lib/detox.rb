@@ -1,5 +1,5 @@
-require "detox/version"
+# coding: utf-8
+require "active_model"
+require "detox/ordering_validator"
 
-module Detox
-  # Your code goes here...
-end
+ActiveModel::Validations.__send__(:include, Detox)
