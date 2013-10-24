@@ -1,0 +1,4 @@
+ja:
+  errors:
+    messages:
+      invalid_as_order: "は順序として成立していません"
