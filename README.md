@@ -1,5 +1,8 @@
 # Detox
 
+[![Build Status](https://secure.travis-ci.org/pinzolo/detox.png)](http://travis-ci.org/pinzolo/detox)
+[![Coverage Status](https://coveralls.io/repos/pinzolo/detox/badge.png)](https://coveralls.io/r/pinzolo/detox)
+
 TODO: Write a gem description
 
 ## Installation
