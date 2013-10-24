@@ -2,8 +2,8 @@
 require "active_support/core_ext"
 
 module Detox
-  module ValuesExtractable
-    def extract_values(data, options = {})
+  module ArrayValidity
+    def convert_to_validatee(data, options = {})
       values = if data.nil?
                  []
                elsif data.is_a?(Array)

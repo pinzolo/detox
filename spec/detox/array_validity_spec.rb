@@ -1,18 +1,18 @@
 # coding: utf-8
 require "spec_helper"
-require "test_class/values_extractable_test"
+require "test_class/array_validity_test"
 
-describe Detox::ValuesExtractable do
+describe Detox::ArrayValidity do
   before do
-    @test = ValuesExtractableTest.new
+    @test = ArrayValidityTest.new
   end
 
-  describe "#extract_values" do
+  describe "#convert_to_validatee" do
     context "without option" do
       context "when given Array" do
         before do
           data = ["1", nil, "2", "", "3", "  "]
-          @actual = @test.extract_values(data)
+          @actual = @test.convert_to_validatee(data)
         end
 
         it "returns itself" do
@@ -23,7 +23,7 @@ describe Detox::ValuesExtractable do
       context "when given Hash" do
         before do
           data = { :a => "1", :b => nil, :c => "2" , :d => "", :e => "3", :f => "  "}
-          @actual = @test.extract_values(data)
+          @actual = @test.convert_to_validatee(data)
         end
 
         it "returns Array that contains given Hash values" do
@@ -33,7 +33,7 @@ describe Detox::ValuesExtractable do
 
       context "when given nil" do
         before do
-          @actual = @test.extract_values(nil)
+          @actual = @test.convert_to_validatee(nil)
         end
 
         it "returns empty Array" do
@@ -44,7 +44,7 @@ describe Detox::ValuesExtractable do
       context "when given other data" do
         context "when data is not blank" do
           before do
-            @actual = @test.extract_values("data")
+            @actual = @test.convert_to_validatee("data")
           end
 
           it "returns Array that has given data only" do
@@ -53,7 +53,7 @@ describe Detox::ValuesExtractable do
         end
         context "when data is empty" do
           before do
-            @actual = @test.extract_values("")
+            @actual = @test.convert_to_validatee("")
           end
 
           it "returns empty Array that has empty data only" do
@@ -62,7 +62,7 @@ describe Detox::ValuesExtractable do
         end
         context "when data is not blank" do
           before do
-            @actual = @test.extract_values("  ")
+            @actual = @test.convert_to_validatee("  ")
           end
 
           it "returns Array that has given blank data only" do
@@ -79,7 +79,7 @@ describe Detox::ValuesExtractable do
       context "when given Array" do
         before do
           data = ["1", nil, "2", "", "3", "  "]
-          @actual = @test.extract_values(data, @options)
+          @actual = @test.convert_to_validatee(data, @options)
         end
 
         it "returns Array that removed nil" do
@@ -90,7 +90,7 @@ describe Detox::ValuesExtractable do
       context "when given Hash" do
         before do
           data = { :a => "1", :b => nil, :c => "2" , :d => "", :e => "3", :f => "  "}
-          @actual = @test.extract_values(data, @options)
+          @actual = @test.convert_to_validatee(data, @options)
         end
 
         it "returns Array that contains given Hash not nil values" do
@@ -100,7 +100,7 @@ describe Detox::ValuesExtractable do
 
       context "when given nil" do
         before do
-          @actual = @test.extract_values(nil, @options)
+          @actual = @test.convert_to_validatee(nil, @options)
         end
 
         it "returns empty Array" do
@@ -111,7 +111,7 @@ describe Detox::ValuesExtractable do
       context "when given other data" do
         context "when data is not blank" do
           before do
-            @actual = @test.extract_values("data", @options)
+            @actual = @test.convert_to_validatee("data", @options)
           end
 
           it "returns Array that has given data only" do
@@ -120,7 +120,7 @@ describe Detox::ValuesExtractable do
         end
         context "when data is empty" do
           before do
-            @actual = @test.extract_values("", @options)
+            @actual = @test.convert_to_validatee("", @options)
           end
 
           it "returns Array that has empty data only" do
@@ -129,7 +129,7 @@ describe Detox::ValuesExtractable do
         end
         context "when data is not blank" do
           before do
-            @actual = @test.extract_values("  ", @options)
+            @actual = @test.convert_to_validatee("  ", @options)
           end
 
           it "returns Array that has given blank data only" do
@@ -146,7 +146,7 @@ describe Detox::ValuesExtractable do
       context "when given Array" do
         before do
           data = ["1", nil, "2", "", "3", "  "]
-          @actual = @test.extract_values(data, @options)
+          @actual = @test.convert_to_validatee(data, @options)
         end
 
         it "returns Array that removed blank values" do
@@ -157,7 +157,7 @@ describe Detox::ValuesExtractable do
       context "when given Hash" do
         before do
           data = { :a => "1", :b => nil, :c => "2" , :d => "", :e => "3", :f => "  "}
-          @actual = @test.extract_values(data, @options)
+          @actual = @test.convert_to_validatee(data, @options)
         end
 
         it "returns Array that contains given Hash not blank values" do
@@ -167,7 +167,7 @@ describe Detox::ValuesExtractable do
 
       context "when given nil" do
         before do
-          @actual = @test.extract_values(nil, @options)
+          @actual = @test.convert_to_validatee(nil, @options)
         end
 
         it "returns empty Array" do
@@ -178,7 +178,7 @@ describe Detox::ValuesExtractable do
       context "when given other data" do
         context "when data is not blank" do
           before do
-            @actual = @test.extract_values("data", @options)
+            @actual = @test.convert_to_validatee("data", @options)
           end
 
           it "returns Array that has given data only" do
@@ -187,7 +187,7 @@ describe Detox::ValuesExtractable do
         end
         context "when data is empty" do
           before do
-            @actual = @test.extract_values("", @options)
+            @actual = @test.convert_to_validatee("", @options)
           end
 
           it "returns empty Array" do
@@ -196,7 +196,7 @@ describe Detox::ValuesExtractable do
         end
         context "when data is not blank" do
           before do
-            @actual = @test.extract_values("  ", @options)
+            @actual = @test.convert_to_validatee("  ", @options)
           end
 
           it "returns empty Array" do
@@ -213,7 +213,7 @@ describe Detox::ValuesExtractable do
       context "when given Array" do
         before do
           data = ["1", nil, "2", "", "3", "  "]
-          @actual = @test.extract_values(data)
+          @actual = @test.convert_to_validatee(data)
         end
 
         it "returns itself" do
@@ -224,7 +224,7 @@ describe Detox::ValuesExtractable do
       context "when given Hash" do
         before do
           data = { :a => "1", :b => nil, :c => "2" , :d => "", :e => "3", :f => "  "}
-          @actual = @test.extract_values(data)
+          @actual = @test.convert_to_validatee(data)
         end
 
         it "returns Array that contains given Hash values" do
@@ -234,7 +234,7 @@ describe Detox::ValuesExtractable do
 
       context "when given nil" do
         before do
-          @actual = @test.extract_values(nil)
+          @actual = @test.convert_to_validatee(nil)
         end
 
         it "returns empty Array" do
@@ -245,7 +245,7 @@ describe Detox::ValuesExtractable do
       context "when given other data" do
         context "when data is not blank" do
           before do
-            @actual = @test.extract_values("data")
+            @actual = @test.convert_to_validatee("data")
           end
 
           it "returns Array that has given data only" do
@@ -254,7 +254,7 @@ describe Detox::ValuesExtractable do
         end
         context "when data is empty" do
           before do
-            @actual = @test.extract_values("")
+            @actual = @test.convert_to_validatee("")
           end
 
           it "returns empty Array that has empty data only" do
@@ -263,7 +263,7 @@ describe Detox::ValuesExtractable do
         end
         context "when data is not blank" do
           before do
-            @actual = @test.extract_values("  ")
+            @actual = @test.convert_to_validatee("  ")
           end
 
           it "returns Array that has given blank data only" do

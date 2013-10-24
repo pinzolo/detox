@@ -3,10 +3,10 @@ require "active_support/core_ext"
 
 module Detox
   class OrderingValidator < ActiveModel::EachValidator
-    include ValuesExtractable
+    include ArrayValidity
 
     def validate_each(record, attribute, value)
-      values = extract_values(value, options.slice(:ignore_nil_value, :ignore_blank_value))
+      values = convert_to_validatee(value, options.slice(:ignore_nil_value, :ignore_blank_value))
       return if values.blank?
 
       unless values_valid?(values)
