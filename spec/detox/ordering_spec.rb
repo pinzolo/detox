@@ -72,6 +72,12 @@ describe Detox::OrderingValidator do
             expect(@test.valid?).to eq false
           end
         end
+        context "when apply to ['1', '2', '1'] (contains duplicative value)" do
+          it "is invalid" do
+            @test.seq = ["1", "2", "1"]
+            expect(@test.valid?).to eq false
+          end
+        end
       end# }}}
 
       context "when apply to Hash" do# {{{
@@ -120,6 +126,12 @@ describe Detox::OrderingValidator do
         context "when apply to { :a => '2', :b => '3', :c => '4' } (origin is not 1)" do
           it "is invalid" do
             @test.seq = { :a => '2', :b => '3', :c => '4' }
+            expect(@test.valid?).to eq false
+          end
+        end
+        context "when apply to { :a => '1', :b => '2', :c => '1' } (contains duplicative value)" do
+          it "is invalid" do
+            @test.seq = { :a => '1', :b => '2', :c => '1' }
             expect(@test.valid?).to eq false
           end
         end
