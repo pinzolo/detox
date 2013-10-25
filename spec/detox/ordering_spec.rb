@@ -4,7 +4,7 @@ require "active_support/i18n"
 require "test_class/ordering_test"
 
 describe Detox::OrderingValidator do
-  describe "#validates_each" do
+  describe "validation result" do
     context "when given no option" do# {{{
       before do
         @test = OrderingTestWithoutOption.new
