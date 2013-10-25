@@ -84,50 +84,81 @@ describe Detox::AllPresenceValidator do
   end
 
   describe "error message" do
-    before do
-      @test = AllPresenceTest.new
-    end
-
-    context "when valid" do
+    context "when without message option" do# {{{
       before do
-        @test.values = ['1', '2', '3']
-        @test.valid?
+        @test = AllPresenceTest.new
       end
 
-      it "has no message" do
-        expect(@test.errors.present?).to eq false
-      end
-    end
-    context "when invalid" do
-      before do
-        @test.values = ['1', '2', '']
-        @test.valid?
-      end
+      context "when valid" do
+        before do
+          @test.values = ['1', '2', '3']
+          @test.valid?
+        end
 
-      it "has 1 error message" do
-        expect(@test.errors.empty?).to eq false
-        expect(@test.errors.size).to eq 1
+        it "has no message" do
+          expect(@test.errors.present?).to eq false
+        end
       end
-      it "error message is associated with values attribute" do
-        expect(@test.errors.include?(:values)).to eq true
+      context "when invalid" do
+        before do
+          @test.values = ['1', '2', '']
+          @test.valid?
+        end
+
+        it "has 1 error message" do
+          expect(@test.errors.empty?).to eq false
+          expect(@test.errors.size).to eq 1
+        end
+        it "error message is associated with values attribute" do
+          expect(@test.errors.include?(:values)).to eq true
+        end
+        it %q{error messsage is "Values can't contain blank value"} do
+          expect(@test.errors.full_messages.first).to eq "Values can't contain blank value"
+        end
       end
-      it %q{error messsage is "Values can't contain blank value"} do
-        expect(@test.errors.full_messages.first).to eq "Values can't contain blank value"
+      context "when using i18n" do
+        before do
+          @base_locale = I18n.locale
+          I18n.locale = :ja
+          @test.values = ['1', '2', '']
+          @test.valid?
+        end
+        after do
+          I18n.locale = @base_locale
+        end
+        it "error messsage is translated" do
+          expect(@test.errors.full_messages.first).to eq "Values には空の値を含められません"
+        end
       end
-    end
-    context "when using i18n" do
+    end# }}}
+
+    context "when given message option" do# {{{
       before do
-        @base_locale = I18n.locale
-        I18n.locale = :ja
-        @test.values = ['1', '2', '']
-        @test.valid?
+        @test = AllPresenceTestWithMessageOption.new
       end
-      after do
-        I18n.locale = @base_locale
+      context "when invalid" do
+        before do
+          @test.values = ['1', '2', '']
+          @test.valid?
+        end
+        it "error messsage uses given message" do
+          expect(@test.errors.full_messages.first).to eq 'Values is invalid'
+        end
       end
-      it "error messsage is translated" do
-        expect(@test.errors.full_messages.first).to eq "Values には空の値を含められません"
+      context "when using i18n" do
+        before do
+          @base_locale = I18n.locale
+          I18n.locale = :ja
+          @test.values = ['1', '2', '']
+          @test.valid?
+        end
+        after do
+          I18n.locale = @base_locale
+        end
+        it "error messsage is not translated" do
+          expect(@test.errors.full_messages.first).to eq 'Values is invalid'
+        end
       end
-    end
+    end# }}}
   end
 end

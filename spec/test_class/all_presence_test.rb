@@ -7,3 +7,8 @@ class AllPresenceTest < ModelBase
   validates :values, :all_presence => true
 end
 
+class AllPresenceTestWithMessageOption < ModelBase
+  attr_accessor :values
+
+  validates :values, :all_presence => { :message => "is invalid" }
+end
