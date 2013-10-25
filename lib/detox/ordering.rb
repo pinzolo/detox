@@ -7,7 +7,7 @@ module Detox
     include Detox::ArrayValidity
 
     def validate_each(record, attribute, value)
-      values = convert_to_validatee(value, options.slice(:ignore_nil_value, :ignore_blank_value))
+      values = convert_to_validatee(value, options.slice(*ArrayValidity::RESERVED_OPTIONS))
       return if values.blank?
 
       unless values_valid?(values)

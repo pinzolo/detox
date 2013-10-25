@@ -6,10 +6,10 @@ module Detox
     include Detox::ArrayValidity
 
     def validate_each(record, attribute, value)
-      values = convert_to_validatee(value, options.slice(:ignore_nil_value, :ignore_blank_value))
+      values = convert_to_validatee(value, options.slice(*ArrayValidity::RESERVED_OPTIONS))
       return if values.blank?
 
-      new_options = options.dup.except(:ignore_nil_value, :ignore_blank_value).merge(:attributes => attribute)
+      new_options = options.dup.except(*ArrayValidity::RESERVED_OPTIONS).merge(:attributes => attribute)
       validator = ActiveModel::Validations::PresenceValidator.new(new_options)
       holder = TemporaryValidityHolder.new
       validity = values.all? do |v|
@@ -27,10 +27,10 @@ module Detox
     include Detox::ArrayValidity
 
     def validate_each(record, attribute, value)
-      values = convert_to_validatee(value, options.slice(:ignore_nil_value, :ignore_blank_value))
+      values = convert_to_validatee(value, options.slice(*ArrayValidity::RESERVED_OPTIONS))
       return if values.blank?
 
-      new_options = options.dup.except(:ignore_nil_value, :ignore_blank_value).merge(:attributes => attribute)
+      new_options = options.dup.except(*ArrayValidity::RESERVED_OPTIONS).merge(:attributes => attribute)
       validator = ActiveModel::Validations::FormatValidator.new(new_options)
       holder = TemporaryValidityHolder.new
       validity = values.all? do |v|

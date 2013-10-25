@@ -3,6 +3,8 @@ require "active_support/core_ext"
 
 module Detox
   module ArrayValidity
+    RESERVED_OPTIONS = [:ignore_nil_value, :ignore_blank_value]
+
     def convert_to_validatee(data, options = {})
       values = if data.nil?
                  []
