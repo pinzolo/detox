@@ -440,7 +440,7 @@ describe Detox::OrderingValidator do
           @test.seq = ['1', '2', '4']
           @test.valid?
         end
-        it "error messsage uses give message" do
+        it "error messsage uses given message" do
           expect(@test.errors.full_messages.first).to eq 'Seq contains invalid sequence'
         end
       end
