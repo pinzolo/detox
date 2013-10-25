@@ -111,7 +111,7 @@ describe Detox::AllPresenceValidator do
       it "error message is associated with values attribute" do
         expect(@test.errors.include?(:values)).to eq true
       end
-      it "error messsage is 'Values contains blank value'" do
+      it %q{error messsage is "Values can't contain blank value"} do
         expect(@test.errors.full_messages.first).to eq "Values can't contain blank value"
       end
     end
