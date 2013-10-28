@@ -1,10 +1,10 @@
 # coding: utf-8
 require "spec_helper"
-require "detox/temporary_validity_holder"
+require "detox/validity_intermediary"
 
-describe Detox::TemporaryValidityHolder do
+describe Detox::ValidityIntermediary do
   before do
-    @holder = Detox::TemporaryValidityHolder.new
+    @holder = Detox::ValidityIntermediary.new
   end
 
   describe "#errors" do

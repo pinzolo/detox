@@ -1,5 +1,5 @@
 # coding: utf-8
-require "detox/temporary_validity_holder"
+require "detox/validity_intermediary"
 
 module Detox
   class AllPresenceValidator < ActiveModel::EachValidator
@@ -11,7 +11,7 @@ module Detox
 
       new_options = options.dup.except(*ArrayValidity::RESERVED_OPTIONS).merge(:attributes => attribute)
       validator = ActiveModel::Validations::PresenceValidator.new(new_options)
-      holder = TemporaryValidityHolder.new
+      holder = ValidityIntermediary.new
       validity = values.all? do |v|
         validator.validate_each(holder, attribute, v)
         holder.valid?
@@ -32,7 +32,7 @@ module Detox
 
       new_options = options.dup.except(*ArrayValidity::RESERVED_OPTIONS).merge(:attributes => attribute)
       validator = ActiveModel::Validations::FormatValidator.new(new_options)
-      holder = TemporaryValidityHolder.new
+      holder = ValidityIntermediary.new
       validity = values.all? do |v|
         validator.validate_each(holder, attribute, v)
         holder.valid?

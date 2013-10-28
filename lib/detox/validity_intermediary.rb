@@ -1,6 +1,6 @@
 # coding: utf-8
 module Detox
-  class TemporaryValidityHolder
+  class ValidityIntermediary
     attr_reader :errors
 
     def initialize
