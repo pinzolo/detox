@@ -2,6 +2,7 @@
 module Detox
   class ValidityBroker
     attr_reader :errors
+    attr_accessor :validatee
 
     def initialize
       @validity = true
@@ -28,6 +29,10 @@ module Detox
       @validity = false
     end
 
+    def read_attribute_for_validation(attribute)
+      validatee
+    end
+
     class Errors
       def initialize(broker)
         @broker = broker
@@ -35,6 +40,11 @@ module Detox
 
       def add(*inane_args)
         @broker.invaliditize
+      end
+
+      # for support PresenceValidator (version 3.2.x)
+      def add_on_blank(*inane_args)
+        add(*inane_args) if @broker.validatee.blank?
       end
 
       def clear

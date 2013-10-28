@@ -9,11 +9,12 @@ module Detox
       values = convert_to_validatee(value, options.slice(*ArrayValidity::RESERVED_OPTIONS))
       return if values.blank?
 
-      new_options = options.dup.except(*ArrayValidity::RESERVED_OPTIONS).merge(:attributes => attribute)
+      new_options = options.dup.except(*ArrayValidity::RESERVED_OPTIONS).merge(:attributes => [attribute])
       validator = ActiveModel::Validations::PresenceValidator.new(new_options)
       broker = ValidityBroker.new
       validity = values.all? do |v|
-        validator.validate_each(broker, attribute, v)
+        broker.validatee = v
+        validator.validate(broker)
         broker.valid?
       end
       unless validity
@@ -30,11 +31,12 @@ module Detox
       values = convert_to_validatee(value, options.slice(*ArrayValidity::RESERVED_OPTIONS))
       return if values.blank?
 
-      new_options = options.dup.except(*ArrayValidity::RESERVED_OPTIONS).merge(:attributes => attribute)
+      new_options = options.dup.except(*ArrayValidity::RESERVED_OPTIONS).merge(:attributes => [attribute])
       validator = ActiveModel::Validations::FormatValidator.new(new_options)
       broker = ValidityBroker.new
       validity = values.all? do |v|
-        validator.validate_each(broker, attribute, v)
+        broker.validatee = v
+        validator.validate(broker)
         broker.valid?
       end
       unless validity
