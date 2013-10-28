@@ -1,6 +1,6 @@
 # coding: utf-8
 module Detox
-  class ValidityIntermediary
+  class ValidityBroker
     attr_reader :errors
 
     def initialize
@@ -29,16 +29,16 @@ module Detox
     end
 
     class Errors
-      def initialize(holder)
-        @holder = holder
+      def initialize(broker)
+        @broker = broker
       end
 
       def add(*inane_args)
-        @holder.invaliditize
+        @broker.invaliditize
       end
 
       def clear
-        @holder.validitize
+        @broker.validitize
       end
     end
   end
