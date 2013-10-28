@@ -45,11 +45,17 @@ module Detox
       end
     end
   end
+end
+
+unless defined?(ActiveModel::Validations::AbsenceValidator)
+  require "active_model/validations/absence"
+end
+
 #require "active_support/core_ext"
-#ignore_constants = Detox.constants << :WithValidator
+#ignore_constants =  [:WithValidator]
 #consts = (ActiveModel::Validations.constants - ignore_constants).select do |c|
 #  const = "ActiveModel::Validations::#{c}".safe_constantize
-#  const.is_a?(Class) && const.ancestors.include?(ActiveModel::EachValidator)
+#  const.ancestors.include?(ActiveModel::EachValidator)
 #end
 #p consts
-end
+
