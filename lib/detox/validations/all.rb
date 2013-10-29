@@ -7,7 +7,7 @@ unless defined?(ActiveModel::Validations::AbsenceValidator)
 end
 
 ignore_constants =  [:WithValidator]
-defined_validators = Detox.constants
+defined_validators = Detox::Validations.constants
 src = ""
 ActiveModel::Validations.constants.each do |const|
   next if ignore_constants.include?(const)
@@ -20,12 +20,12 @@ ActiveModel::Validations.constants.each do |const|
     include Detox::ArrayValidity
 
     def validate_each(record, attribute, value)
-      values = convert_to_validatee(value, options.slice(*ArrayValidity::RESERVED_OPTIONS))
+      values = convert_to_validatee(value, options.slice(*Detox::ArrayValidity::RESERVED_OPTIONS))
       return if values.blank?
 
-      new_options = options.dup.except(*ArrayValidity::RESERVED_OPTIONS).merge(:attributes => [attribute])
+      new_options = options.dup.except(*Detox::ArrayValidity::RESERVED_OPTIONS).merge(:attributes => [attribute])
       validator = ActiveModel::Validations::#{const}.new(new_options)
-      broker = ValidityBroker.new
+      broker = Detox::ValidityBroker.new
       validity = values.all? do |v|
         broker.validatee = v
         validator.validate(broker)
@@ -41,5 +41,5 @@ EOS
   src << define_validator_src
 end
 
-Detox.module_eval(src)
+Detox::Validations.module_eval(src)
 

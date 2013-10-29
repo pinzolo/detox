@@ -3,7 +3,7 @@ require "spec_helper"
 require "active_support/i18n"
 require "test_class/all_format_test"
 
-describe Detox::AllFormatValidator do
+describe Detox::Validations::AllFormatValidator do
   describe "validation result (pattern is /\\A\\w+\\z/)" do
     context "when given no additional option" do# {{{
       before do

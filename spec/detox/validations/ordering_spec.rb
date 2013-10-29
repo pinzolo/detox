@@ -3,7 +3,7 @@ require "spec_helper"
 require "active_support/i18n"
 require "test_class/ordering_test"
 
-describe Detox::OrderingValidator do
+describe Detox::Validations::OrderingValidator do
   describe "validation result" do
     context "when given no option" do# {{{
       before do

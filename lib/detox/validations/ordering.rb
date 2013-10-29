@@ -2,12 +2,12 @@
 require "active_support/core_ext"
 require "detox/array_validity"
 
-module Detox
+module Detox::Validations
   class OrderingValidator < ActiveModel::EachValidator
     include Detox::ArrayValidity
 
     def validate_each(record, attribute, value)
-      values = convert_to_validatee(value, options.slice(*ArrayValidity::RESERVED_OPTIONS))
+      values = convert_to_validatee(value, options.slice(*Detox::ArrayValidity::RESERVED_OPTIONS))
       return if values.blank?
 
       unless values_valid?(values)

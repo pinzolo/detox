@@ -1,12 +1,12 @@
 # coding: utf-8
 require "spec_helper"
 require "active_support/i18n"
-require "test_class/all_absence_test"
+require "test_class/all_presence_test"
 
-describe Detox::AllAbsenceValidator do
+describe Detox::Validations::AllPresenceValidator do
   describe "validation result" do
     before do
-      @test = AllAbsenceTest.new
+      @test = AllPresenceTest.new
     end
 
     context "when apply to nil" do
@@ -23,21 +23,27 @@ describe Detox::AllAbsenceValidator do
           expect(@test.valid?).to eq true
         end
       end
-      context "when apply to [nil, nil, nil] (only nil)" do
+      context "when apply to ['1', '2', '3'] (no blank value)" do
         it "is valid" do
-          @test.values = [nil, nil, nil]
+          @test.values = ["1", "2", "3"]
           expect(@test.valid?).to eq true
         end
       end
-      context "when apply to [nil, '', '   '] (nil, empty, blank)" do
-        it "is valid" do
-          @test.values = [nil, "", "   "]
-          expect(@test.valid?).to eq true
-        end
-      end
-      context "when apply to [nil, '', '   ', '4'] (contains not blank value)" do
+      context "when apply to ['1', '2', nil] (contains nil)" do
         it "is invalid" do
-          @test.values = [nil, "", "   ", "4"]
+          @test.values = ['1', '2', nil]
+          expect(@test.valid?).to eq false
+        end
+      end
+      context "when apply to ['1', '2', ''] (contains empty)" do
+        it "is invalid" do
+          @test.values = ['1', '2', '']
+          expect(@test.valid?).to eq false
+        end
+      end
+      context "when apply to ['1', '2', '   '] (contains blank)" do
+        it "is invalid" do
+          @test.values = ['1', '2', '   ']
           expect(@test.valid?).to eq false
         end
       end
@@ -50,21 +56,27 @@ describe Detox::AllAbsenceValidator do
           expect(@test.valid?).to eq true
         end
       end
-      context "when apply to { :a => nil, :b => nil, :c => nil } (only nil)" do
+      context "when apply to { :a => '1', :b => '2', :c => '3' } (no blank value)" do
         it "is valid" do
-          @test.values = { :a => nil, :b => nil, :c => nil }
+          @test.values = { :a => '1', :b => '2', :c => '3' }
           expect(@test.valid?).to eq true
         end
       end
-      context "when apply to { :a => nil, :b => '', :c => '   ' } (only nil)" do
-        it "is valid" do
-          @test.values = { :a => nil, :b => "", :c => "   " }
-          expect(@test.valid?).to eq true
-        end
-      end
-      context "when apply to { :a => nil, :b => '', :c => '   ', :d => '4' } (contains not blank value)" do
+      context "when apply to { :a => '1', :b => '2', :c => nil } (contains nil)" do
         it "is invalid" do
-          @test.values = { :a => nil, :b => "", :c => "   ", :d => "4"}
+          @test.values = { :a => '1', :b => '2', :c => nil }
+          expect(@test.valid?).to eq false
+        end
+      end
+      context "when apply to { :a => '1', :b => '2', :c => '' } (contains empty)" do
+        it "is invalid" do
+          @test.values = { :a => '1', :b => '2', :c => '' }
+          expect(@test.valid?).to eq false
+        end
+      end
+      context "when apply to { :a => '1', :b => '2', :c => '   ' } (contains blank)" do
+        it "is invalid" do
+          @test.values = { :a => '1', :b => '2', :c => '   ' }
           expect(@test.valid?).to eq false
         end
       end
@@ -74,12 +86,12 @@ describe Detox::AllAbsenceValidator do
   describe "error message" do
     context "when without message option" do# {{{
       before do
-        @test = AllAbsenceTest.new
+        @test = AllPresenceTest.new
       end
 
       context "when valid" do
         before do
-          @test.values = [nil, "", "   "]
+          @test.values = ['1', '2', '3']
           @test.valid?
         end
 
@@ -89,7 +101,7 @@ describe Detox::AllAbsenceValidator do
       end
       context "when invalid" do
         before do
-          @test.values = [nil, "", "1"]
+          @test.values = ['1', '2', '']
           @test.valid?
         end
 
@@ -100,33 +112,33 @@ describe Detox::AllAbsenceValidator do
         it "error message is associated with values attribute" do
           expect(@test.errors.include?(:values)).to eq true
         end
-        it %q{error messsage is "Values can't contain not blank value"} do
-          expect(@test.errors.full_messages.first).to eq "Values can't contain not blank value"
+        it %q{error messsage is "Values can't contain blank value"} do
+          expect(@test.errors.full_messages.first).to eq "Values can't contain blank value"
         end
       end
       context "when using i18n" do
         before do
           @base_locale = I18n.locale
           I18n.locale = :ja
-          @test.values = [nil, "", "1"]
+          @test.values = ['1', '2', '']
           @test.valid?
         end
         after do
           I18n.locale = @base_locale
         end
         it "error messsage is translated" do
-          expect(@test.errors.full_messages.first).to eq "Values には空ではない値を含められません"
+          expect(@test.errors.full_messages.first).to eq "Values には空の値を含められません"
         end
       end
     end# }}}
 
     context "when given message option" do# {{{
       before do
-        @test = AllAbsenceTestWithMessageOption.new
+        @test = AllPresenceTestWithMessageOption.new
       end
       context "when invalid" do
         before do
-          @test.values = [nil, "", "1"]
+          @test.values = ['1', '2', '']
           @test.valid?
         end
         it "error messsage uses given message" do
@@ -137,7 +149,7 @@ describe Detox::AllAbsenceValidator do
         before do
           @base_locale = I18n.locale
           I18n.locale = :ja
-          @test.values = [nil, "", "1"]
+          @test.values = ['1', '2', '']
           @test.valid?
         end
         after do
