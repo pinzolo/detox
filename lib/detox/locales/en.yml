@@ -3,4 +3,5 @@ en:
     messages:
       invalid_as_order: "is not satisfied as order"
       all_presence: "can't contain blank value"
+      all_absence: "can't contain not blank value"
       all_format: "contains invalid format value"
