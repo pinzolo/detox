@@ -5,3 +5,4 @@ ja:
       all_presence: "には空の値を含められません"
       all_absence: "には空ではない値を含められません"
       all_format: "には不正な形式の値が含まれています"
+      all_numericality: "は数値でない値を含んでいます"
