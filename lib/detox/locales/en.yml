@@ -6,3 +6,4 @@ en:
       all_absence: "can't contain not blank value"
       all_format: "contains invalid format value"
       all_numericality: "contains not numeric value"
+      all_length: "contains invalid length value"
