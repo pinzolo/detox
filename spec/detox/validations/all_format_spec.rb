@@ -26,31 +26,31 @@ describe Detox::Validations::AllFormatValidator do
         end
         context "when apply to ['foo', 'bar', 'baz'] (valid values)" do
           it "is valid" do
-            @test.words = ["for", "bar", "baz"]
+            @test.words = ["foo", "bar", "baz"]
             expect(@test.valid?).to eq true
           end
         end
         context "when apply to ['foo', 'bar', 'b@z'] (contains invalid word)" do
           it "is invalid" do
-            @test.words = ["for", "bar", "b@z"]
+            @test.words = ["foo", "bar", "b@z"]
             expect(@test.valid?).to eq false
           end
         end
         context "when apply to ['foo', 'bar', nil] (contains nil)" do
           it "is invalid" do
-            @test.words = ["for", "bar", nil]
+            @test.words = ["foo", "bar", nil]
             expect(@test.valid?).to eq false
           end
         end
         context "when apply to ['foo', 'bar', ''] (contains empty)" do
           it "is invalid" do
-            @test.words = ["for", "bar", ""]
+            @test.words = ["foo", "bar", ""]
             expect(@test.valid?).to eq false
           end
         end
         context "when apply to ['foo', 'bar', '   '] (contains blank)" do
           it "is invalid" do
-            @test.words = ["for", "bar", "   "]
+            @test.words = ["foo", "bar", "   "]
             expect(@test.valid?).to eq false
           end
         end
@@ -117,31 +117,31 @@ describe Detox::Validations::AllFormatValidator do
         end
         context "when apply to ['foo', 'bar', 'baz'] (valid values)" do
           it "is valid" do
-            @test.words = ["for", "bar", "baz"]
+            @test.words = ["foo", "bar", "baz"]
             expect(@test.valid?).to eq true
           end
         end
         context "when apply to ['foo', 'bar', 'b@z'] (contains invalid word)" do
           it "is invalid" do
-            @test.words = ["for", "bar", "b@z"]
+            @test.words = ["foo", "bar", "b@z"]
             expect(@test.valid?).to eq false
           end
         end
         context "when apply to ['foo', 'bar', nil] (contains nil)" do
           it "is valid" do
-            @test.words = ["for", "bar", nil]
+            @test.words = ["foo", "bar", nil]
             expect(@test.valid?).to eq true
           end
         end
         context "when apply to ['foo', 'bar', ''] (contains empty)" do
           it "is invalid" do
-            @test.words = ["for", "bar", ""]
+            @test.words = ["foo", "bar", ""]
             expect(@test.valid?).to eq false
           end
         end
         context "when apply to ['foo', 'bar', '   '] (contains blank)" do
           it "is invalid" do
-            @test.words = ["for", "bar", "   "]
+            @test.words = ["foo", "bar", "   "]
             expect(@test.valid?).to eq false
           end
         end
@@ -208,31 +208,31 @@ describe Detox::Validations::AllFormatValidator do
         end
         context "when apply to ['foo', 'bar', 'baz'] (valid values)" do
           it "is valid" do
-            @test.words = ["for", "bar", "baz"]
+            @test.words = ["foo", "bar", "baz"]
             expect(@test.valid?).to eq true
           end
         end
         context "when apply to ['foo', 'bar', 'b@z'] (contains invalid word)" do
           it "is invalid" do
-            @test.words = ["for", "bar", "b@z"]
+            @test.words = ["foo", "bar", "b@z"]
             expect(@test.valid?).to eq false
           end
         end
         context "when apply to ['foo', 'bar', nil] (contains nil)" do
           it "is valid" do
-            @test.words = ["for", "bar", nil]
+            @test.words = ["foo", "bar", nil]
             expect(@test.valid?).to eq true
           end
         end
         context "when apply to ['foo', 'bar', ''] (contains empty)" do
           it "is valid" do
-            @test.words = ["for", "bar", ""]
+            @test.words = ["foo", "bar", ""]
             expect(@test.valid?).to eq true
           end
         end
         context "when apply to ['foo', 'bar', '   '] (contains blank)" do
           it "is valid" do
-            @test.words = ["for", "bar", "   "]
+            @test.words = ["foo", "bar", "   "]
             expect(@test.valid?).to eq true
           end
         end
