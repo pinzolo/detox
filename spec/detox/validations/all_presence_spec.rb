@@ -16,7 +16,7 @@ describe Detox::Validations::AllPresenceValidator do
       end
     end
 
-    context "when apply to Array" do
+    context "when apply to Array" do# {{{
       context "when apply to [] (empty)" do
         it "is valid" do
           @test.values = []
@@ -47,9 +47,9 @@ describe Detox::Validations::AllPresenceValidator do
           expect(@test.valid?).to eq false
         end
       end
-    end
+    end# }}}
 
-    context "when apply to Hash" do
+    context "when apply to Hash" do# {{{
       context "when apply to {} (empty)" do
         it "is valid" do
           @test.values = {}
@@ -80,7 +80,7 @@ describe Detox::Validations::AllPresenceValidator do
           expect(@test.valid?).to eq false
         end
       end
-    end
+    end# }}}
   end
 
   describe "error message" do
