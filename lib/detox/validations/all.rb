@@ -6,7 +6,7 @@ unless defined?(ActiveModel::Validations::AbsenceValidator)
   require "active_model/validations/absence"
 end
 
-ignore_constants =  [:WithValidator]
+ignore_constants =  [:ConfirmationValidator, :WithValidator]
 defined_validators = Detox::Validations.constants
 src = ""
 ActiveModel::Validations.constants.each do |const|
@@ -43,3 +43,4 @@ end
 
 Detox::Validations.module_eval(src)
 
+p Detox::Validations.constants
