@@ -8,3 +8,4 @@ ja:
       all_numericality: "は数値でない値を含んでいます"
       all_length: "には長さが不正な値が含まれています"
       all_inclusion: "にはリストに含まれていない値が含まれています"
+      all_exclusion: "にはリストに含まれている値が含まれています"
