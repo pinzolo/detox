@@ -2,6 +2,7 @@
 require "active_model"
 require "active_support/i18n"
 require "detox/validations/ordering"
+require "detox/validations/possession"
 require "detox/validations/all"
 
 ActiveModel::Validations.__send__(:include, Detox::Validations)

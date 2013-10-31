@@ -9,3 +9,4 @@ en:
       all_length: "contains invalid length value"
       all_inclusion: "contains value that is not included in the list"
       all_exclusion: "contains value that is included in the list"
+      possession: "must possess target (target: %{target})"
