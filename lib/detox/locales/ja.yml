@@ -9,4 +9,5 @@ ja:
       all_length: "には長さが不正な値が含まれています"
       all_inclusion: "にはリストに含まれていない値が含まれています"
       all_exclusion: "にはリストに含まれている値が含まれています"
+      all_acceptance: "を全て承諾してください"
       possession: "には対象(%{target})が含まれている必要があります"
