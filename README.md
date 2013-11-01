@@ -21,6 +21,8 @@ Or install it yourself as:
 
 ## Usage
 
+Look [spec/test_class](https://github.com/pinzolo/detox/tree/master/spec/test_class) for sample usage
+
 - Validators for attribute that has Array or Hash value
   - **ordering**: validates continuous numbers
   - **possession**: validates subset values
