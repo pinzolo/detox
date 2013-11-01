@@ -3,7 +3,7 @@
 [![Build Status](https://secure.travis-ci.org/pinzolo/detox.png)](http://travis-ci.org/pinzolo/detox)
 [![Coverage Status](https://coveralls.io/repos/pinzolo/detox/badge.png)](https://coveralls.io/r/pinzolo/detox)
 
-TODO: Write a gem description
+Detox is validator set that can apply to ActiveModel/ActiveRecord
 
 ## Installation
 
@@ -21,7 +21,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+- Validators for attribute that has Array or Hash value
+  - **ordering**: validates continuous numbers
+  - **possession**: validates subset values
+  - **all_xxx**: validates that all value are valid, by basic validators (xxx is presence, format etc.)
+  - **any_xxx**: validates that has valid value, by basic validators (xxx is presence, format etc.)
+
 
 ## Contributing
 
