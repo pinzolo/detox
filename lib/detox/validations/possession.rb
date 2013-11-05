@@ -5,7 +5,7 @@ module Detox::Validations
   class PossessionValidator < ActiveModel::EachValidator
     include Detox::ArrayValidity
 
-    ERROR_MESSAGE = ":target must be supplied"
+    ERROR_MESSAGE = ":target must be supplied".freeze
 
     def validate_each(record, attribute, value)
       values = convert_to_validatee(value, options.slice(*Detox::ArrayValidity::RESERVED_OPTIONS))
