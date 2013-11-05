@@ -1,5 +1,7 @@
 # coding: utf-8
 require "active_support/core_ext"
+require "detox/array_validity"
+require "detox/validity_broker"
 
 ignore_constants =  [:ConfirmationValidator, :WithValidator]
 defined_validators = Detox::Validations.constants
@@ -40,34 +42,15 @@ ActiveModel::Validations.constants.each do |const|
       end
 
       unless count_valid?(valid_count)
-        message = options[:message] || message_key
-        record.errors.add(attribute, message, options)
+        message = options[:message] || :any_#{const.to_s.underscore.gsub(/_validator\z/, "")}
+        record.errors.add(attribute, message, { :min_valid_count => 1, :max_valid_count => "" }.merge(options))
       end
     end
 
     private
     def count_valid?(valid_count)
-      if options[:min_valid_count]
-        if options[:max_valid_count]
-          validity = options[:min_valid_count] <= valid_count && valid_count <= options[:max_valid_count]
-        else
-          validity = options[:min_valid_count] <= valid_count
-        end
-      else
-        if options[:max_valid_count]
-          validity = valid_count <= options[:max_valid_count]
-        else
-          validity = valid_count == 1
-        end
-      end
-    end
-
-    def message_key
-      if options[:min_valid_count] || options[:max_valid_count]
-        :any_#{const.to_s.underscore.gsub(/_validator\z/, "")}_with_count
-      else
-        :any_#{const.to_s.underscore.gsub(/_validator\z/, "")}
-      end
+      (options[:min_valid_count] || 1) <= valid_count &&
+        (options[:max_valid_count].nil? || valid_count <= options[:max_valid_count])
     end
   end
 EOS

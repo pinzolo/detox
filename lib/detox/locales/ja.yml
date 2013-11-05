@@ -2,6 +2,7 @@ ja:
   errors:
     messages:
       invalid_as_order: "は順序として成立していません"
+      possession: "には対象(%{target})が含まれている必要があります"
       all_presence: "には空の値を含められません"
       all_absence: "には空ではない値を含められません"
       all_format: "には不正な形式の値が含まれています"
@@ -10,4 +11,4 @@ ja:
       all_inclusion: "にはリストに含まれていない値が含まれています"
       all_exclusion: "にはリストに含まれている値が含まれています"
       all_acceptance: "を全て承諾してください"
-      possession: "には対象(%{target})が含まれている必要があります"
+      any_presence: "には空でない値が必要数(%{min_valid_count}～%{max_valid_count})含まれている必要があります"

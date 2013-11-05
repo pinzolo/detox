@@ -2,6 +2,7 @@ en:
   errors:
     messages:
       invalid_as_order: "is not satisfied as order"
+      possession: "must possess target (target: %{target})"
       all_presence: "can't contain blank value"
       all_absence: "can't contain not blank value"
       all_format: "contains invalid format value"
@@ -10,4 +11,4 @@ en:
       all_inclusion: "contains value that is not included in the list"
       all_exclusion: "contains value that is included in the list"
       all_acceptance: "must be all accepted"
-      possession: "must possess target (target: %{target})"
+      any_presence: "must not contain any required number (%{min_valid_count}-%{max_valid_count}) of value that is not blank"
