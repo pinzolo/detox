@@ -12,3 +12,4 @@ en:
       all_exclusion: "contains value that is included in the list"
       all_acceptance: "must be all accepted"
       any_presence: "must not contain any required number (%{min_valid_count}-%{max_valid_count}) of value that is not blank"
+      any_acceptance: "must be accepted required number (%{min_valid_count}-%{max_valid_count})"
