@@ -2,6 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/pinzolo/detox.png)](http://travis-ci.org/pinzolo/detox)
 [![Coverage Status](https://coveralls.io/repos/pinzolo/detox/badge.png)](https://coveralls.io/r/pinzolo/detox)
+[![Code Climate](https://codeclimate.com/github/pinzolo/detox.png)](https://codeclimate.com/github/pinzolo/detox)
 
 Detox is validator set that can apply to ActiveModel/ActiveRecord
 
