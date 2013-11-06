@@ -447,8 +447,8 @@ describe Detox::Validations::AnyAcceptanceValidator do
         it "error message is associated with flags attribute" do
           expect(@test.errors.include?(:flags)).to eq true
         end
-        it %q{error messsage is "Flags must be accepted required number (1-)"} do
-          expect(@test.errors.full_messages.first).to eq "Flags must be accepted required number (1-)"
+        it %q{error messsage is "Flags must be accepted (required number is 1-)"} do
+          expect(@test.errors.full_messages.first).to eq "Flags must be accepted (required number is 1-)"
         end
       end
       context "when using i18n" do
@@ -485,8 +485,8 @@ describe Detox::Validations::AnyAcceptanceValidator do
         it "error message is associated with flags attribute" do
           expect(@test.errors.include?(:flags)).to eq true
         end
-        it %q{error messsage is "Flags must be accepted required number (2-)"} do
-          expect(@test.errors.full_messages.first).to eq "Flags must be accepted required number (2-)"
+        it %q{error messsage is "Flags must be accepted (required number is 2-)"} do
+          expect(@test.errors.full_messages.first).to eq "Flags must be accepted (required number is 2-)"
         end
       end
       context "when using i18n" do
@@ -523,8 +523,8 @@ describe Detox::Validations::AnyAcceptanceValidator do
         it "error message is associated with flags attribute" do
           expect(@test.errors.include?(:flags)).to eq true
         end
-        it %q{error messsage is "Flags must be accepted required number (1-3)"} do
-          expect(@test.errors.full_messages.first).to eq "Flags must be accepted required number (1-3)"
+        it %q{error messsage is "Flags must be accepted (required number is 1-3)"} do
+          expect(@test.errors.full_messages.first).to eq "Flags must be accepted (required number is 1-3)"
         end
       end
       context "when using i18n" do
@@ -561,8 +561,8 @@ describe Detox::Validations::AnyAcceptanceValidator do
         it "error message is associated with flags attribute" do
           expect(@test.errors.include?(:flags)).to eq true
         end
-        it %q{error messsage is "Flags must be accepted required number (2-3)"} do
-          expect(@test.errors.full_messages.first).to eq "Flags must be accepted required number (2-3)"
+        it %q{error messsage is "Flags must be accepted (required number is 2-3)"} do
+          expect(@test.errors.full_messages.first).to eq "Flags must be accepted (required number is 2-3)"
         end
       end
       context "when using i18n" do

@@ -447,8 +447,8 @@ describe Detox::Validations::AnyPresenceValidator do
         it "error message is associated with values attribute" do
           expect(@test.errors.include?(:values)).to eq true
         end
-        it %q{error messsage is "Values must not contain any required number (1-) of value that is not blank"} do
-          expect(@test.errors.full_messages.first).to eq "Values must not contain any required number (1-) of value that is not blank"
+        it %q{error messsage is "Values must contain not blank value (required number is 1-)"} do
+          expect(@test.errors.full_messages.first).to eq "Values must contain not blank value (required number is 1-)"
         end
       end
       context "when using i18n" do
@@ -485,8 +485,8 @@ describe Detox::Validations::AnyPresenceValidator do
         it "error message is associated with values attribute" do
           expect(@test.errors.include?(:values)).to eq true
         end
-        it %q{error messsage is "Values must not contain any required number (2-) of value that is not blank"} do
-          expect(@test.errors.full_messages.first).to eq "Values must not contain any required number (2-) of value that is not blank"
+        it %q{error messsage is "Values must contain not blank value (required number is 2-)"} do
+          expect(@test.errors.full_messages.first).to eq "Values must contain not blank value (required number is 2-)"
         end
       end
       context "when using i18n" do
@@ -523,8 +523,8 @@ describe Detox::Validations::AnyPresenceValidator do
         it "error message is associated with values attribute" do
           expect(@test.errors.include?(:values)).to eq true
         end
-        it %q{error messsage is "Values must not contain any required number (1-3) of value that is not blank"} do
-          expect(@test.errors.full_messages.first).to eq "Values must not contain any required number (1-3) of value that is not blank"
+        it %q{error messsage is "Values must contain not blank value (required number is 1-3)"} do
+          expect(@test.errors.full_messages.first).to eq "Values must contain not blank value (required number is 1-3)"
         end
       end
       context "when using i18n" do
@@ -561,8 +561,8 @@ describe Detox::Validations::AnyPresenceValidator do
         it "error message is associated with values attribute" do
           expect(@test.errors.include?(:values)).to eq true
         end
-        it %q{error messsage is "Values must not contain any required number (2-3) of value that is not blank"} do
-          expect(@test.errors.full_messages.first).to eq "Values must not contain any required number (2-3) of value that is not blank"
+        it %q{error messsage is "Values must contain not blank value (required number is 2-3)"} do
+          expect(@test.errors.full_messages.first).to eq "Values must contain not blank value (required number is 2-3)"
         end
       end
       context "when using i18n" do
