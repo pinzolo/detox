@@ -14,7 +14,7 @@ ActiveModel::Validations.constants.each do |const|
   next if ignore_constants.include?(const)
   base_validator = "ActiveModel::Validations::#{const}".safe_constantize
   next unless base_validator.ancestors.include?(ActiveModel::EachValidator)
-  next if defined_validators.include?("Detox::All#{const}".to_sym)
+  next if defined_validators.include?("All#{const}".to_sym)
 
   define_validator_src = <<-EOS
   class All#{const} < ActiveModel::EachValidator
