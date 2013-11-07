@@ -14,3 +14,4 @@ en:
       any_presence: "must contain not blank value (required number is %{min_valid_count}-%{max_valid_count})"
       any_acceptance: "must be accepted (required number is %{min_valid_count}-%{max_valid_count})"
       any_format: "must be valid format (required number is %{min_valid_count}-%{max_valid_count})"
+      any_length: "must be valid length (required number is %{min_valid_count}-%{max_valid_count})"

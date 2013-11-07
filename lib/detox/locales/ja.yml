@@ -14,3 +14,4 @@ ja:
       any_presence: "には空でない値が必要数(%{min_valid_count}～%{max_valid_count})含まれている必要があります"
       any_acceptance: "は指定件数(%{min_valid_count}～%{max_valid_count})承諾してください"
       any_format: "は必要数(%{min_valid_count}～%{max_valid_count})が正しい形式でなければなりません"
+      any_length: "は必要数(%{min_valid_count}～%{max_valid_count})が正しい長さでなければなりません"
