@@ -12,6 +12,7 @@ ja:
       all_exclusion: "にはリストに含まれている値が含まれています"
       all_acceptance: "を全て承諾してください"
       any_presence: "には空でない値が必要数(%{min_valid_count}～%{max_valid_count})含まれている必要があります"
+      any_absence: "には空の値が必要数(%{min_valid_count}～%{max_valid_count})含まれている必要があります"
       any_acceptance: "は指定件数(%{min_valid_count}～%{max_valid_count})承諾してください"
       any_format: "は必要数(%{min_valid_count}～%{max_valid_count})が正しい形式でなければなりません"
       any_length: "は必要数(%{min_valid_count}～%{max_valid_count})が正しい長さでなければなりません"
