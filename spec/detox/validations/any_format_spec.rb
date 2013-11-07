@@ -24,9 +24,9 @@ describe Detox::Validations::AnyFormatValidator do
             expect(@test.valid?).to eq true
           end
         end
-        context "when apply to ['b@r', '', '   '] (all words are 'b@r' or empty or blank)" do
+        context "when apply to [nil, '', '   '] (all words are nil or empty or blank)" do
           it "is invalid" do
-            @test.words = ['b@r', "", "   "]
+            @test.words = [nil, "", "   "]
             expect(@test.valid?).to eq false
           end
         end
@@ -69,9 +69,9 @@ describe Detox::Validations::AnyFormatValidator do
             expect(@test.valid?).to eq true
           end
         end
-        context "when apply to { :a => 'b@r', :b => 'b@r', :c => 'b@r', :d => 'b@r' :e => 'b@r' } (all words are 'b@r' or empty or blank)" do
+        context "when apply to { :a => nil, :b => '', :c => '   ' } (all words are nil or empty or blank)" do
           it "is invalid" do
-            @test.words = { :a => 'b@r', :b => "", :c => "   " }
+            @test.words = { :a => nil, :b => "", :c => "   " }
             expect(@test.valid?).to eq false
           end
         end
@@ -127,9 +127,9 @@ describe Detox::Validations::AnyFormatValidator do
             expect(@test.valid?).to eq true
           end
         end
-        context "when apply to ['b@r', '', '   '] (all words are 'b@r' or empty or blank)" do
+        context "when apply to [nil, '', '   '] (all words are nil or empty or blank)" do
           it "is invalid" do
-            @test.words = ['b@r', "", "   "]
+            @test.words = [nil, "", "   "]
             expect(@test.valid?).to eq false
           end
         end
@@ -172,9 +172,9 @@ describe Detox::Validations::AnyFormatValidator do
             expect(@test.valid?).to eq true
           end
         end
-        context "when apply to { :a => 'b@r', :b => 'b@r', :c => 'b@r', :d => 'b@r' :e => 'b@r' } (all words are 'b@r' or empty or blank)" do
+        context "when apply to { :a => nil, :b => '', :c => '   ' } (all words are nil or empty or blank)" do
           it "is invalid" do
-            @test.words = { :a => 'b@r', :b => "", :c => "   " }
+            @test.words = { :a => nil, :b => "", :c => "   " }
             expect(@test.valid?).to eq false
           end
         end
@@ -230,9 +230,9 @@ describe Detox::Validations::AnyFormatValidator do
             expect(@test.valid?).to eq true
           end
         end
-        context "when apply to ['b@r', '', '   '] (all words are 'b@r' or empty or blank)" do
+        context "when apply to [nil, '', '   '] (all words are nil or empty or blank)" do
           it "is invalid" do
-            @test.words = ['b@r', "", "   "]
+            @test.words = [nil, "", "   "]
             expect(@test.valid?).to eq false
           end
         end
@@ -275,9 +275,9 @@ describe Detox::Validations::AnyFormatValidator do
             expect(@test.valid?).to eq true
           end
         end
-        context "when apply to { :a => 'b@r', :b => 'b@r', :c => 'b@r', :d => 'b@r' :e => 'b@r' } (all words are 'b@r' or empty or blank)" do
+        context "when apply to { :a => nil, :b => '', :c => '   ' } (all words are nil or empty or blank)" do
           it "is invalid" do
-            @test.words = { :a => 'b@r', :b => "", :c => "   " }
+            @test.words = { :a => nil, :b => "", :c => "   " }
             expect(@test.valid?).to eq false
           end
         end
@@ -333,9 +333,9 @@ describe Detox::Validations::AnyFormatValidator do
             expect(@test.valid?).to eq true
           end
         end
-        context "when apply to ['b@r', '', '   '] (all words are 'b@r' or empty or blank)" do
+        context "when apply to [nil, '', '   '] (all words are nil or empty or blank)" do
           it "is invalid" do
-            @test.words = ['b@r', "", "   "]
+            @test.words = [nil, "", "   "]
             expect(@test.valid?).to eq false
           end
         end
@@ -378,9 +378,9 @@ describe Detox::Validations::AnyFormatValidator do
             expect(@test.valid?).to eq true
           end
         end
-        context "when apply to { :a => 'b@r', :b => 'b@r', :c => 'b@r', :d => 'b@r' :e => 'b@r' } (all words are 'b@r' or empty or blank)" do
+        context "when apply to { :a => nil, :b => '', :c => '   ' } (all words are nil or empty or blank)" do
           it "is invalid" do
-            @test.words = { :a => 'b@r', :b => "", :c => "   " }
+            @test.words = { :a => nil, :b => "", :c => "   " }
             expect(@test.valid?).to eq false
           end
         end
