@@ -18,3 +18,4 @@ ja:
       any_length: "は必要数(%{min_valid_count}～%{max_valid_count})が正しい長さでなければなりません"
       any_numericality: "は必要数(%{min_valid_count}～%{max_valid_count})が数値でなければなりません"
       any_inclusion: "は必要数(%{min_valid_count}～%{max_valid_count})がリストに含まれていなければなりません"
+      any_exclusion: "は必要数(%{min_valid_count}～%{max_valid_count})がリストに含まれていない値でなければなりません"

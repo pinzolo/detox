@@ -18,3 +18,4 @@ en:
       any_length: "must be valid length (required number is %{min_valid_count}-%{max_valid_count})"
       any_numericality: "must be numeric (required number is %{min_valid_count}-%{max_valid_count})"
       any_inclusion: "must be included in the list (required number is %{min_valid_count}-%{max_valid_count})"
+      any_exclusion: "must be not included in the list (required number is %{min_valid_count}-%{max_valid_count})"
