@@ -13,14 +13,15 @@ validators_source = ActiveModel::Validations.constants.each_with_object("") do |
     include Detox::ArrayValidity
 
     def check_validity!
-      if (options[:min_valid_count] != nil && !options[:min_valid_count].is_a?(Integer)) ||
-         (options[:max_valid_count] != nil && !options[:max_valid_count].is_a?(Integer)) ||
-         (options[:min_valid_count] != nil && options[:min_valid_count] <= 0) ||
-         (options[:max_valid_count] != nil && options[:max_valid_count] <= 0)
+      min_valid_count, max_valid_count = options[:min_valid_count], options[:max_valid_count]
+      if (min_valid_count != nil && !min_valid_count.is_a?(Integer)) ||
+         (max_valid_count != nil && !max_valid_count.is_a?(Integer)) ||
+         (min_valid_count != nil && min_valid_count <= 0) ||
+         (max_valid_count != nil && max_valid_count <= 0)
         raise ArgumentError, ":min_valid_count and :max_valid_count must be a positive integer ( greater than 0 ) or nil"
       end
-      if options[:min_valid_count] != nil && options[:max_valid_count] != nil && options[:min_valid_count] > options[:max_valid_count]
-        raise ArgumentError, ":min_valid_count must be less than :max_valid_count"
+      if min_valid_count != nil && max_valid_count != nil && min_valid_count > max_valid_count
+        raise ArgumentError, ":min_valid_count must be less than or equal to :max_valid_count"
       end
     end
 

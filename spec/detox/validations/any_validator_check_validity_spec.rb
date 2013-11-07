@@ -94,13 +94,13 @@ describe "Any*Validator#check_validity!" do
     end
   end
   context "when :min_valid_count is greater than :max_valid_count" do
-    it "raise ArgumentError(:min_valid_count must be less than :max_valid_count)" do
+    it "raise ArgumentError(:min_valid_count must be less than or equal to:max_valid_count)" do
       expect do
         class AnyTestWhenMinValidCountIsGreaterThanMaxValidCount < ModelBase
           attr_accessor :values
           validates :values, :any_presence => { :min_valid_count => 3, :max_valid_count => 2 }
         end
-      end.to raise_error(ArgumentError, ":min_valid_count must be less than :max_valid_count")
+      end.to raise_error(ArgumentError, ":min_valid_count must be less than or equal to :max_valid_count")
     end
   end
   context "when :min_valid_count equals to :max_valid_count" do
