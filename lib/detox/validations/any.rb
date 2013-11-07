@@ -4,15 +4,11 @@ require "detox/array_validity"
 require "detox/validity_broker"
 
 ignore_constants =  [:ConfirmationValidator, :WithValidator]
-defined_validators = Detox::Validations.constants
-src = ""
-ActiveModel::Validations.constants.each do |const|
+validators_source = ActiveModel::Validations.constants.each_with_object("") do |const, src|
   next if ignore_constants.include?(const)
-  base_validator = "ActiveModel::Validations::#{const}".safe_constantize
-  next unless base_validator.ancestors.include?(ActiveModel::EachValidator)
-  next if defined_validators.include?("Any#{const}".to_sym)
+  next if Detox::Validations.constants.include?("Any#{const}".to_sym)
 
-  define_validator_src = <<-EOS
+  src << <<-EOS
   class Any#{const} < ActiveModel::EachValidator
     include Detox::ArrayValidity
 
@@ -54,8 +50,7 @@ ActiveModel::Validations.constants.each do |const|
     end
   end
 EOS
-  src << define_validator_src
 end
 
-Detox::Validations.module_eval(src)
+Detox::Validations.module_eval(validators_source)
 
