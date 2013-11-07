@@ -6,52 +6,50 @@ require "test_class/all_format_test"
 describe Detox::Validations::AllFormatValidator do
   describe "validation result (pattern is /\\A\\w+\\z/)" do
     context "when given no additional option" do# {{{
-      before do
-        @test = AllFormatTest.new
-      end
+      let(:test) { AllFormatTest.new }
 
       context "when apply to nil" do
         it "is valid" do
-          @test.words = nil
-          expect(@test.valid?).to eq true
+          test.words = nil
+          expect(test.valid?).to eq true
         end
       end
 
       context "when apply to Array" do# {{{
         context "when apply to [] (empty)" do
           it "is valid" do
-            @test.words = []
-            expect(@test.valid?).to eq true
+            test.words = []
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to ['foo', 'bar', 'baz'] (valid values)" do
           it "is valid" do
-            @test.words = ["foo", "bar", "baz"]
-            expect(@test.valid?).to eq true
+            test.words = ["foo", "bar", "baz"]
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to ['foo', 'bar', 'b@z'] (contains invalid word)" do
           it "is invalid" do
-            @test.words = ["foo", "bar", "b@z"]
-            expect(@test.valid?).to eq false
+            test.words = ["foo", "bar", "b@z"]
+            expect(test.valid?).to eq false
           end
         end
         context "when apply to ['foo', 'bar', nil] (contains nil)" do
           it "is invalid" do
-            @test.words = ["foo", "bar", nil]
-            expect(@test.valid?).to eq false
+            test.words = ["foo", "bar", nil]
+            expect(test.valid?).to eq false
           end
         end
         context "when apply to ['foo', 'bar', ''] (contains empty)" do
           it "is invalid" do
-            @test.words = ["foo", "bar", ""]
-            expect(@test.valid?).to eq false
+            test.words = ["foo", "bar", ""]
+            expect(test.valid?).to eq false
           end
         end
         context "when apply to ['foo', 'bar', '   '] (contains blank)" do
           it "is invalid" do
-            @test.words = ["foo", "bar", "   "]
-            expect(@test.valid?).to eq false
+            test.words = ["foo", "bar", "   "]
+            expect(test.valid?).to eq false
           end
         end
       end# }}}
@@ -59,90 +57,88 @@ describe Detox::Validations::AllFormatValidator do
       context "when apply to Hash" do# {{{
         context "when apply to {} (empty)" do
           it "is valid" do
-            @test.words = {}
-            expect(@test.valid?).to eq true
+            test.words = {}
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to { :a => 'foo', :b => 'bar', :c => 'baz' } (valid values)" do
           it "is valid" do
-            @test.words = { :a => 'foo', :b => 'bar', :c => 'baz' }
-            expect(@test.valid?).to eq true
+            test.words = { :a => 'foo', :b => 'bar', :c => 'baz' }
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to { :a => 'foo', :b => 'bar', :c => 'b@z' } (contains invalid word)" do
           it "is invalid" do
-            @test.words = { :a => 'foo', :b => 'bar', :c => 'b@z' }
-            expect(@test.valid?).to eq false
+            test.words = { :a => 'foo', :b => 'bar', :c => 'b@z' }
+            expect(test.valid?).to eq false
           end
         end
         context "when apply to { :a => 'foo', :b => 'bar', :c => nil } (contains nil)" do
           it "is invalid" do
-            @test.words = { :a => 'foo', :b => 'bar', :c => nil }
-            expect(@test.valid?).to eq false
+            test.words = { :a => 'foo', :b => 'bar', :c => nil }
+            expect(test.valid?).to eq false
           end
         end
         context "when apply to { :a => 'foo', :b => 'bar', :c => '' } (contains empty)" do
           it "is invalid" do
-            @test.words = { :a => 'foo', :b => 'bar', :c => '' }
-            expect(@test.valid?).to eq false
+            test.words = { :a => 'foo', :b => 'bar', :c => '' }
+            expect(test.valid?).to eq false
           end
         end
         context "when apply to { :a => 'foo', :b => 'bar', :c => '   ' } (contains blank)" do
           it "is invalid" do
-            @test.words = { :a => 'foo', :b => 'bar', :c => '   ' }
-            expect(@test.valid?).to eq false
+            test.words = { :a => 'foo', :b => 'bar', :c => '   ' }
+            expect(test.valid?).to eq false
           end
         end
       end# }}}
     end# }}}
 
     context "when given ignore_nil_value option" do# {{{
-      before do
-        @test = AllFormatTestWithIgnoreNilValueOption.new
-      end
+      let(:test) { AllFormatTestWithIgnoreNilValueOption.new }
 
       context "when apply to nil" do
         it "is valid" do
-          @test.words = nil
-          expect(@test.valid?).to eq true
+          test.words = nil
+          expect(test.valid?).to eq true
         end
       end
 
       context "when apply to Array" do# {{{
         context "when apply to [] (empty)" do
           it "is valid" do
-            @test.words = []
-            expect(@test.valid?).to eq true
+            test.words = []
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to ['foo', 'bar', 'baz'] (valid values)" do
           it "is valid" do
-            @test.words = ["foo", "bar", "baz"]
-            expect(@test.valid?).to eq true
+            test.words = ["foo", "bar", "baz"]
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to ['foo', 'bar', 'b@z'] (contains invalid word)" do
           it "is invalid" do
-            @test.words = ["foo", "bar", "b@z"]
-            expect(@test.valid?).to eq false
+            test.words = ["foo", "bar", "b@z"]
+            expect(test.valid?).to eq false
           end
         end
         context "when apply to ['foo', 'bar', nil] (contains nil)" do
           it "is valid" do
-            @test.words = ["foo", "bar", nil]
-            expect(@test.valid?).to eq true
+            test.words = ["foo", "bar", nil]
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to ['foo', 'bar', ''] (contains empty)" do
           it "is invalid" do
-            @test.words = ["foo", "bar", ""]
-            expect(@test.valid?).to eq false
+            test.words = ["foo", "bar", ""]
+            expect(test.valid?).to eq false
           end
         end
         context "when apply to ['foo', 'bar', '   '] (contains blank)" do
           it "is invalid" do
-            @test.words = ["foo", "bar", "   "]
-            expect(@test.valid?).to eq false
+            test.words = ["foo", "bar", "   "]
+            expect(test.valid?).to eq false
           end
         end
       end# }}}
@@ -150,90 +146,88 @@ describe Detox::Validations::AllFormatValidator do
       context "when apply to Hash" do# {{{
         context "when apply to {} (empty)" do
           it "is valid" do
-            @test.words = {}
-            expect(@test.valid?).to eq true
+            test.words = {}
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to { :a => 'foo', :b => 'bar', :c => 'baz' } (valid values)" do
           it "is valid" do
-            @test.words = { :a => 'foo', :b => 'bar', :c => 'baz' }
-            expect(@test.valid?).to eq true
+            test.words = { :a => 'foo', :b => 'bar', :c => 'baz' }
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to { :a => 'foo', :b => 'bar', :c => 'b@z' } (contains invalid word)" do
           it "is invalid" do
-            @test.words = { :a => 'foo', :b => 'bar', :c => 'b@z' }
-            expect(@test.valid?).to eq false
+            test.words = { :a => 'foo', :b => 'bar', :c => 'b@z' }
+            expect(test.valid?).to eq false
           end
         end
         context "when apply to { :a => 'foo', :b => 'bar', :c => nil } (contains nil)" do
           it "is valid" do
-            @test.words = { :a => 'foo', :b => 'bar', :c => nil }
-            expect(@test.valid?).to eq true
+            test.words = { :a => 'foo', :b => 'bar', :c => nil }
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to { :a => 'foo', :b => 'bar', :c => '' } (contains empty)" do
           it "is invalid" do
-            @test.words = { :a => 'foo', :b => 'bar', :c => '' }
-            expect(@test.valid?).to eq false
+            test.words = { :a => 'foo', :b => 'bar', :c => '' }
+            expect(test.valid?).to eq false
           end
         end
         context "when apply to { :a => 'foo', :b => 'bar', :c => '   ' } (contains blank)" do
           it "is invalid" do
-            @test.words = { :a => 'foo', :b => 'bar', :c => '   ' }
-            expect(@test.valid?).to eq false
+            test.words = { :a => 'foo', :b => 'bar', :c => '   ' }
+            expect(test.valid?).to eq false
           end
         end
       end# }}}
     end# }}}
 
     context "when given ignore_blank_value option" do# {{{
-      before do
-        @test = AllFormatTestWithIgnoreBlankValueOption.new
-      end
+      let(:test) { AllFormatTestWithIgnoreBlankValueOption.new }
 
       context "when apply to nil" do
         it "is valid" do
-          @test.words = nil
-          expect(@test.valid?).to eq true
+          test.words = nil
+          expect(test.valid?).to eq true
         end
       end
 
       context "when apply to Array" do# {{{
         context "when apply to [] (empty)" do
           it "is valid" do
-            @test.words = []
-            expect(@test.valid?).to eq true
+            test.words = []
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to ['foo', 'bar', 'baz'] (valid values)" do
           it "is valid" do
-            @test.words = ["foo", "bar", "baz"]
-            expect(@test.valid?).to eq true
+            test.words = ["foo", "bar", "baz"]
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to ['foo', 'bar', 'b@z'] (contains invalid word)" do
           it "is invalid" do
-            @test.words = ["foo", "bar", "b@z"]
-            expect(@test.valid?).to eq false
+            test.words = ["foo", "bar", "b@z"]
+            expect(test.valid?).to eq false
           end
         end
         context "when apply to ['foo', 'bar', nil] (contains nil)" do
           it "is valid" do
-            @test.words = ["foo", "bar", nil]
-            expect(@test.valid?).to eq true
+            test.words = ["foo", "bar", nil]
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to ['foo', 'bar', ''] (contains empty)" do
           it "is valid" do
-            @test.words = ["foo", "bar", ""]
-            expect(@test.valid?).to eq true
+            test.words = ["foo", "bar", ""]
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to ['foo', 'bar', '   '] (contains blank)" do
           it "is valid" do
-            @test.words = ["foo", "bar", "   "]
-            expect(@test.valid?).to eq true
+            test.words = ["foo", "bar", "   "]
+            expect(test.valid?).to eq true
           end
         end
       end# }}}
@@ -241,38 +235,38 @@ describe Detox::Validations::AllFormatValidator do
       context "when apply to Hash" do# {{{
         context "when apply to {} (empty)" do
           it "is valid" do
-            @test.words = {}
-            expect(@test.valid?).to eq true
+            test.words = {}
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to { :a => 'foo', :b => 'bar', :c => 'baz' } (valid values)" do
           it "is valid" do
-            @test.words = { :a => 'foo', :b => 'bar', :c => 'baz' }
-            expect(@test.valid?).to eq true
+            test.words = { :a => 'foo', :b => 'bar', :c => 'baz' }
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to { :a => 'foo', :b => 'bar', :c => 'b@z' } (contains invalid word)" do
           it "is invalid" do
-            @test.words = { :a => 'foo', :b => 'bar', :c => 'b@z' }
-            expect(@test.valid?).to eq false
+            test.words = { :a => 'foo', :b => 'bar', :c => 'b@z' }
+            expect(test.valid?).to eq false
           end
         end
         context "when apply to { :a => 'foo', :b => 'bar', :c => nil } (contains nil)" do
           it "is valid" do
-            @test.words = { :a => 'foo', :b => 'bar', :c => nil }
-            expect(@test.valid?).to eq true
+            test.words = { :a => 'foo', :b => 'bar', :c => nil }
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to { :a => 'foo', :b => 'bar', :c => '' } (contains empty)" do
           it "is valid" do
-            @test.words = { :a => 'foo', :b => 'bar', :c => '' }
-            expect(@test.valid?).to eq true
+            test.words = { :a => 'foo', :b => 'bar', :c => '' }
+            expect(test.valid?).to eq true
           end
         end
         context "when apply to { :a => 'foo', :b => 'bar', :c => '   ' } (contains blank)" do
           it "is valid" do
-            @test.words = { :a => 'foo', :b => 'bar', :c => '   ' }
-            expect(@test.valid?).to eq true
+            test.words = { :a => 'foo', :b => 'bar', :c => '   ' }
+            expect(test.valid?).to eq true
           end
         end
       end# }}}
@@ -281,78 +275,75 @@ describe Detox::Validations::AllFormatValidator do
 
   describe "error message" do
     context "when witout message option" do# {{{
-      before do
-        @test = AllFormatTest.new
-      end
+      let(:test) { AllFormatTest.new }
 
       context "when valid" do
         before do
-          @test.words = ['foo', 'bar', 'baz']
-          @test.valid?
+          test.words = ['foo', 'bar', 'baz']
+          test.valid?
         end
 
         it "has no message" do
-          expect(@test.errors.present?).to eq false
+          expect(test.errors.present?).to eq false
         end
       end
       context "when invalid" do
         before do
-          @test.words = ['foo', 'bar', 'b@z']
-          @test.valid?
+          test.words = ['foo', 'bar', 'b@z']
+          test.valid?
         end
 
         it "has 1 error message" do
-          expect(@test.errors.empty?).to eq false
-          expect(@test.errors.size).to eq 1
+          expect(test.errors.empty?).to eq false
+          expect(test.errors.size).to eq 1
         end
         it "error message is associated with words attribute" do
-          expect(@test.errors.include?(:words)).to eq true
+          expect(test.errors.include?(:words)).to eq true
         end
         it "error messsage is 'Words contains invalid format value'" do
-          expect(@test.errors.full_messages.first).to eq "Words contains invalid format value"
+          expect(test.errors.full_messages.first).to eq "Words contains invalid format value"
         end
       end
       context "when using i18n" do
         before do
           @base_locale = I18n.locale
           I18n.locale = :ja
-          @test.words = ['foo', 'bar', 'b@z']
-          @test.valid?
+          test.words = ['foo', 'bar', 'b@z']
+          test.valid?
         end
         after do
           I18n.locale = @base_locale
         end
         it "error messsage is translated" do
-          expect(@test.errors.full_messages.first).to eq "Words には不正な形式の値が含まれています"
+          expect(test.errors.full_messages.first).to eq "Words には不正な形式の値が含まれています"
         end
       end
     end# }}}
 
     context "when given message option" do# {{{
-      before do
-        @test = AllFormatTestWithMessageOption.new
-      end
+      let(:test) { AllFormatTestWithMessageOption.new }
+
       context "when invalid" do
         before do
-          @test.words = ['foo', 'bar', 'b@z']
-          @test.valid?
+          test.words = ['foo', 'bar', 'b@z']
+          test.valid?
         end
         it "error messsage uses given message" do
-          expect(@test.errors.full_messages.first).to eq 'Words is invalid'
+          expect(test.errors.full_messages.first).to eq 'Words is invalid'
         end
       end
       context "when using i18n" do
         before do
           @base_locale = I18n.locale
           I18n.locale = :ja
-          @test.words = ['foo', 'bar', 'b@z']
-          @test.valid?
+          test.words = ['foo', 'bar', 'b@z']
+          test.valid?
         end
         after do
           I18n.locale = @base_locale
         end
         it "error messsage is not translated" do
-          expect(@test.errors.full_messages.first).to eq 'Words is invalid'
+          expect(test.errors.full_messages.first).to eq 'Words is invalid'
         end
       end
     end# }}}
