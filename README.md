@@ -27,6 +27,7 @@ Look [spec/test_class](https://github.com/pinzolo/detox/tree/master/spec/test_cl
 - Validators for attribute that has Array or Hash value
   - **ordering**: validates continuous numbers
   - **possession**: validates subset values
+  - **values_uniqueness**: validates unique values
   - **all_xxx**: validates that all value are valid, by basic validators (xxx is presence, format etc.)
   - **any_xxx**: validates that has valid value, by basic validators (xxx is presence, format etc.)
 
@@ -38,3 +39,9 @@ Look [spec/test_class](https://github.com/pinzolo/detox/tree/master/spec/test_cl
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+
+## Changelog
+- v1.0.0 (2013-11-07 JST):  First release
+- v1.0.1 (2013-11-13 JST):  Add ValuesUniquenessValidator
+

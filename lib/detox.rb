@@ -3,6 +3,7 @@ require "active_model"
 require "active_support/i18n"
 require "detox/validations/ordering"
 require "detox/validations/possession"
+require "detox/validations/values_uniqueness"
 require "detox/validations/all"
 require "detox/validations/any"
 
