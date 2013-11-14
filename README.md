@@ -42,6 +42,8 @@ Look [spec/test_class](https://github.com/pinzolo/detox/tree/master/spec/test_cl
 
 
 ## Changelog
+
 - v1.0.0 (2013-11-07 JST):  First release
 - v1.0.1 (2013-11-13 JST):  Add ValuesUniquenessValidator
+- v1.1.0 (2013-11-15 JST):  Versioning rule changed
 
