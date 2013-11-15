@@ -19,5 +19,16 @@ module Detox
       values = values.reject(&:blank?) if options[:ignore_blank_value]
       values
     end
+
+    def validate_values(args)
+      record, attribute, value, message, opts = *args.values
+
+      values = convert_to_validatee(value, opts.slice(*Detox::ArrayValidity::RESERVED_OPTIONS))
+      return if values.blank?
+
+      unless values_valid?(values)
+        record.errors.add(attribute, message, opts)
+      end
+    end
   end
 end

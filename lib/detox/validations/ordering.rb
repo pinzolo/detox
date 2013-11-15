@@ -7,18 +7,22 @@ module Detox::Validations
     include Detox::ArrayValidity
 
     def validate_each(record, attribute, value)
-      values = convert_to_validatee(value, options.slice(*Detox::ArrayValidity::RESERVED_OPTIONS))
-      return if values.blank?
+      args = { :record => record,
+               :attribute => attribute,
+               :value => value,
+               :message => options[:message] || :invalid_as_order,
+               :options => options }
 
-      unless values_valid?(values)
-        message = options[:message] || :invalid_as_order
-        record.errors.add(attribute, message)
-      end
+      validate_values(args)
     end
 
     private
     def values_valid?(values)
-      valid_numbers(values.length).map(&:to_s).sort == values.map(&:to_s).sort
+      same_values?(valid_numbers(values.length), values)
+    end
+
+    def same_values?(values, another)
+      normalize_values_for_compare(values) == normalize_values_for_compare(another)
     end
 
     def valid_numbers(length)
@@ -29,6 +33,10 @@ module Detox::Validations
     def first_number
       num = options[:start_with].to_i
       num.zero? ? 1 : num
+    end
+
+    def normalize_values_for_compare(values)
+      values.map(&:to_s).sort
     end
   end
 end

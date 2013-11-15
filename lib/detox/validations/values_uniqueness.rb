@@ -7,13 +7,13 @@ module Detox::Validations
     include Detox::ArrayValidity
 
     def validate_each(record, attribute, value)
-      values = convert_to_validatee(value, options.slice(*Detox::ArrayValidity::RESERVED_OPTIONS))
-      return if values.blank?
+      args = { :record => record,
+               :attribute => attribute,
+               :value => value,
+               :message => options[:message] || :values_not_unique,
+               :options => options }
 
-      unless values_valid?(values)
-        message = options[:message] || :values_not_unique
-        record.errors.add(attribute, message)
-      end
+      validate_values(args)
     end
 
     private

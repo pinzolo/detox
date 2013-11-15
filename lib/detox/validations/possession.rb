@@ -8,13 +8,13 @@ module Detox::Validations
     ERROR_MESSAGE = ":target must be supplied".freeze
 
     def validate_each(record, attribute, value)
-      values = convert_to_validatee(value, options.slice(*Detox::ArrayValidity::RESERVED_OPTIONS))
-      return if values.blank?
+      args = { :record => record,
+               :attribute => attribute,
+               :value => value,
+               :message => options[:message] || :possession,
+               :options => options.merge(:target => [options[:target]].flatten.join(", ")) }
 
-      unless values_valid?(values)
-        message = options[:message] || :possession
-        record.errors.add(attribute, message, options.merge(:target => [options[:target]].flatten.join(", ")))
-      end
+      validate_values(args)
     end
 
     def check_validity!
