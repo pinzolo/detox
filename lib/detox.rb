@@ -8,5 +8,7 @@ require "detox/validations/all"
 require "detox/validations/any"
 
 ActiveModel::Validations.__send__(:include, Detox::Validations)
-I18n.load_path << Dir[Pathname.new(File.dirname(__FILE__)).join("detox", "locales", "*.yml")]
+Dir[Pathname.new(File.dirname(__FILE__)).join("detox", "locales", "*.yml")].each do |f|
+  I18n.load_path << f
+end
 
