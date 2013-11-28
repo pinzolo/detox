@@ -7,7 +7,13 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require "coveralls"
-Coveralls.wear!
+require "simplecov"
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+SimpleCov.start do
+  add_filter '/active_model/'
+  add_filter '/spec/'
+  add_filter '/bundle/'
+end
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
